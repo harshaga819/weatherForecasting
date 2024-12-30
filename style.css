@@ -1,7 +1,6 @@
 *{
     margin: 0rem;
     padding: 0rem;
-    border: none;
     box-sizing: border-box;
 }
 
@@ -10,13 +9,15 @@ body{
 }
 
 .weatherReport{
-    width: 90vw;
-    visibility:hidden;
+    visibility: hidden;
+    width: 100%;
+    position:fixed;
+    top: 1rem;
     padding: 0rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    margin: 2rem;
+    margin: 0rem;
 }
 
 .heading i{
@@ -78,6 +79,7 @@ body{
 .details{
     display: flex;
     flex-direction: column;
+    color: #ffffff;
 }
 
 .column p{
@@ -101,17 +103,17 @@ box-icon{
 }
 
 .search{
-    position: absolute;
+    position: relative;
     width: 20rem;
     background-color: rgb(61, 203, 203);
     box-shadow: 1px 1px 9px #ffffff;
     border-radius: 1rem;
     border: 1px solid #ffffff;
-    margin: 2rem;
+    margin: 2rem 0rem;
     padding: .5rem;
-    top: 50%;
+    top: 10rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 }
 
 .heading{
@@ -129,16 +131,17 @@ box-icon{
     height: 2.3rem;
     width: 15rem;
     border-radius: 1rem;
+    border: none;
     padding: 1rem;
     color: black;
-    margin: 0rem 0rem 0rem 1.2rem;
+    margin: 0rem 0rem .5rem 1rem;
 }
 
-.searchBox h4{
+span{
     position: relative;
-    left: 40%;
+    left: 45%;
+    transform: translateX(-50%);
     color: #ffffff;
-    margin: 1rem 0rem;
 }
 
 .searchBox button{
@@ -153,7 +156,8 @@ box-icon{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1.2rem;
+    margin-left: 1rem;
+    margin-top: .5rem;
     font-size: 1.2rem;
 }
 
@@ -163,11 +167,11 @@ box-icon{
     background-color: transparent;
     border: .1rem solid #ffffff;
     padding: .5rem;
-    margin: 2rem;
-    position: relative;
-    bottom: 1rem;
+    margin: 2rem 0rem;
+    position: absolute;
+    top: 75%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%);
     display: flex;
 }
 
@@ -175,19 +179,20 @@ box-icon{
     height: 1.5rem;
     width: 1.5rem;
     background-color: #ffffff;
+    border: .05rem solid #ffffff;
     position: relative;
     margin: .2rem;
     border-radius: 50%;
 }
 
 .footer{
-    position: relative;
+    position: absolute;
     bottom: 0rem;
-    width: 100vw;
-    height: 3.5rem;
+    width: 100%;
+    padding: 1rem;
     color: #ffffff;
+    border-top: .2rem solid #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
 }

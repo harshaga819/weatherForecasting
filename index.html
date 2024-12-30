@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,65 +7,64 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Weather Application</title>
 </head>
-
 <body>
-    <section>
-        <div class="weatherReport">
-            <div class="heading">
-                <i class='bx bx-chevrons-left backArrow'></i>
-                <h1>Weather Application</h1>
+    <div class="weatherReport">
+        <div class="heading">
+            <i class='bx bx-chevrons-left backArrow'></i>
+            <h1>Weather Application</h1>
+        </div>
+        <div class="weatherPart">
+            <img src="images/cloud.svg" alt="">
+            <div class="temp">
+                <span class="num">27</span>
+                <span class="deg">°</span>
+                <span class="celcious">c</span>
             </div>
-            <div class="weatherPart">
-                <img src="images/cloud.svg" alt="">
-                <div class="temp">
-                    <span class="num">27</span>
-                    <span class="deg">°</span>
-                    <span class="celcious">c</span>
+            <div class="weather">Haze</div>
+            <div class="location">
+                <i class='bx bx-location-plus'></i>
+                <span>AMER</span>
+            </div>
+            <div class="otherDetails">
+                <div class="column feels">
+                    <box-icon type='solid' name='thermometer' size='cssSize'></box-icon>
+                    <div class="details">
+                        <div class="temp">
+                            <span class="num">27</span>
+                            <span class="deg">°</span>
+                            <span class="celcious">c</span>
+                        </div>
+                        <p>Feels Like</p>
+                    </div>
                 </div>
-                <div class="weather">Haze</div>
-                <div class="location">
-                    <i class='bx bx-location-plus'></i>
-                    <span>AMER</span>
+                <div class="column humidity">
+                    <box-icon type='solid' name='droplet-half' size='cssSize'></box-icon>
+                    <div class="details">
+                        <span class="num">60%</span>
+                        <p>Humidity</p>
+                    </div>
                 </div>
-                <div class="otherDetails">
-                    <div class="column feels">
-                        <box-icon type='solid' name='thermometer' size='cssSize'></box-icon>
-                        <div class="details">
-                            <div class="temp">
-                                <span class="num">27</span>
-                                <span class="deg">°</span>
-                                <span class="celcious">c</span>
-                            </div>
-                            <p>Feels Like</p>
-                        </div>
+                <div class="column wind">
+                    <box-icon name='wind' size="cssSize"></box-icon>
+                    <div class="details">
+                        <span class="num">0 m/s</span>
+                        <span>Wind Speed</span>
                     </div>
-                    <div class="column humidity">
-                        <box-icon type='solid' name='droplet-half' size='cssSize'></box-icon>
-                        <div class="details">
-                            <span class="num">60%</span>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                    <div class="column wind">
-                        <box-icon name='wind' size="cssSize"></box-icon> 
-                        <div class="details">
-                            <span class="num">0 m/s</span>
-                            <span>Wind Speed</span>
-                        </div>
-                    </div>
-                    <div class="column date-time">
-                        <span>sunday, October 20 2024 at 9:00 PM</span>
-                    </div>
+                </div>
+                <div class="column date-time">
+                    <span>sunday, October 20 2024 at 9:00 PM</span>
                 </div>
             </div>
         </div>
+    </div>
+
         <div class="search">
             <div class="heading">
                 <h2>Weather Application</h2>
             </div>
             <div class="searchBox">
-                <input type="text" placeholder="Enter your city name" >
-                <h4>OR</h4>
+                <input type="text" placeholder="Enter your city name">
+                <span>OR</span>
                 <div class="location">
                     <button id="currentLocation">
                         <h5>Current Location</h5>
@@ -74,8 +72,6 @@
                 </div>
             </div>
         </div>
-    </section>
-    <footer>
         <div class="colors">
             <div class="color" style="background-color: red;"></div>
             <div class="color" style="background-color: blue;"></div>
@@ -86,12 +82,12 @@
             <div class="color" style="background-color: #008080;"></div>
             <div class="color" style="background-color: #C34CFF;"></div>
             <div class="color" style="background-color: #4161D8;"></div>
-            <div class="color" style="background-color: BLACK;"></div>
+            <div class="color" style="background-color: #f358e9;"></div>
         </div>
         <div class="footer">
             <p>BY - Harsh Agarwal</p>
         </div>
-    </footer>
+    
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="app.js"></script>
 </body>
