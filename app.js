@@ -50,7 +50,6 @@ async function requestApi(city) {
         console.log(da);
         document.querySelector(".location").innerHTML = da.name;
         document.querySelector(".weather").innerHTML = da.weather[0].main;
-        console.log(da.weather[0].main);
         if (da.weather[0].main == "Clouds") {
             weatherIcon.src = "images/cloud.svg";
           } else if (da.weather[0].main == "Clear") {
@@ -70,6 +69,7 @@ async function requestApi(city) {
 }
 
 let submit = document.querySelector("input");
+
 submit.addEventListener("keypress", function (event) {
     if (event.key === "Enter" && submit.value != "") {
         search.style.visibility = "hidden";
@@ -79,11 +79,59 @@ submit.addEventListener("keypress", function (event) {
     }
 });
 
+
 locationBtn.addEventListener("click", function () {
     search.style.visibility = "hidden";
     weatherReport.style.visibility = "visible";
 });
 
-backArrow.addEventListener("click",function(){
-
+locationBtn.addEventListener("click", function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                fetchWeatherByLocation(latitude, longitude);
+            },
+            error => {
+                console.error("Error getting location:", error.message);
+                alert("Unable to fetch location. Please enable location services.");
+            }
+        );
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
 });
+
+function fetchWeatherByLocation(lat, lon) {
+    const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    fetch(api)
+        .then(response => response.json())
+        .then(data => {
+            updateWeatherReport(data);
+        })
+        .catch(error => {
+            console.error("Error fetching weather data:", error.message);
+        });
+}
+
+function updateWeatherReport(data) {
+    search.style.visibility = "hidden";
+    weatherReport.style.visibility = "visible";
+    document.querySelector(".location").innerHTML = data.name;
+    document.querySelector(".weather").innerHTML = data.weather[0].main;
+    if (da.weather[0].main == "Clouds") {
+        weatherIcon.src = "images/cloud.svg";
+      } else if (da.weather[0].main == "Clear") {
+        weatherIcon.src = 'images/clear.png';
+      } else if (da.weather[0].main == "Rain") {
+        weatherIcon.src = "images/rain.png";
+      } else if (da.weather[0].main == "Drizzle") {
+        weatherIcon.src = "images/drizzle.png";
+      } else if (da.weather[0].main == "Mist") {
+        weatherIcon.src = 'images/mist.png';
+      }
+    document.querySelector(".num").innerHTML = data.main.temp;
+    document.querySelector(".feel").innerHTML = data.main.feels_like;
+    document.querySelector(".humid").innerHTML = `${data.main.humidity}%`;
+    document.querySelector(".windSpeed").innerHTML = `${data.wind.speed} m/sec`;
+}
