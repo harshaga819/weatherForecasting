@@ -47,7 +47,6 @@ async function requestApi(city) {
         .catch(error => {
             console.log('Error:', error);
         });
-        console.log(da);
         document.querySelector(".location").innerHTML = da.name;
         document.querySelector(".weather").innerHTML = da.weather[0].main;
         if (da.weather[0].main == "Clouds") {
@@ -65,7 +64,6 @@ async function requestApi(city) {
         document.querySelector(".feel").innerHTML = da.main.feels_like;
         document.querySelector(".humid").innerHTML = da.main.humidity +"%";
         document.querySelector(".windSpeed").innerHTML = da.wind.speed +"m/sec"; 
-
 }
 
 let submit = document.querySelector("input");
@@ -79,11 +77,6 @@ submit.addEventListener("keypress", function (event) {
     }
 });
 
-
-locationBtn.addEventListener("click", function () {
-    search.style.visibility = "hidden";
-    weatherReport.style.visibility = "visible";
-});
 
 locationBtn.addEventListener("click", function () {
     if (navigator.geolocation) {
@@ -100,6 +93,8 @@ locationBtn.addEventListener("click", function () {
     } else {
         alert("Geolocation is not supported by this browser.");
     }
+    search.style.visibility = "hidden";
+    weatherReport.style.visibility = "visible";
 });
 
 function fetchWeatherByLocation(lat, lon) {
@@ -115,19 +110,17 @@ function fetchWeatherByLocation(lat, lon) {
 }
 
 function updateWeatherReport(data) {
-    search.style.visibility = "hidden";
-    weatherReport.style.visibility = "visible";
     document.querySelector(".location").innerHTML = data.name;
     document.querySelector(".weather").innerHTML = data.weather[0].main;
-    if (da.weather[0].main == "Clouds") {
+    if (data.weather[0].main == "Clouds") {
         weatherIcon.src = "images/cloud.svg";
-      } else if (da.weather[0].main == "Clear") {
+      } else if (data.weather[0].main == "Clear") {
         weatherIcon.src = 'images/clear.png';
-      } else if (da.weather[0].main == "Rain") {
+      } else if (data.weather[0].main == "Rain") {
         weatherIcon.src = "images/rain.png";
-      } else if (da.weather[0].main == "Drizzle") {
+      } else if (data.weather[0].main == "Drizzle") {
         weatherIcon.src = "images/drizzle.png";
-      } else if (da.weather[0].main == "Mist") {
+      } else if (data.weather[0].main == "Mist") {
         weatherIcon.src = 'images/mist.png';
       }
     document.querySelector(".num").innerHTML = data.main.temp;
@@ -135,3 +128,5 @@ function updateWeatherReport(data) {
     document.querySelector(".humid").innerHTML = `${data.main.humidity}%`;
     document.querySelector(".windSpeed").innerHTML = `${data.wind.speed} m/sec`;
 }
+
+

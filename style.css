@@ -68,6 +68,23 @@ body{
     margin: 1.5rem;
     padding: 0rem 1rem;
 }
+@media (max-width: 686px){
+    .otherDetails{
+        width: 97%;
+        justify-content: center;
+        
+    }
+    .column{
+        width: 100%;
+        flex-direction: column;
+    }
+    .icon{
+        display: none;
+    }
+    .details p{
+        color: black;
+    }
+}
 
 .column{
     border-top: 1px solid white;
