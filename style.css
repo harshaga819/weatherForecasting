@@ -45,6 +45,8 @@ body{
 
 .deg{
     font-size: 1.5rem;
+    position: relative;
+    left: 1.5rem;
 }
 
 .celcious{
@@ -58,11 +60,13 @@ body{
 
 .location{
     font-size: 1rem;
+    display: flex;
 }
 
 .otherDetails{
     display: flex;
-    margin-top: 1.5rem;
+    margin: 1.5rem;
+    padding: 0rem 1rem;
 }
 
 .column{
@@ -78,24 +82,34 @@ body{
 
 .details{
     display: flex;
+    position: relative;
+    left: .6rem;
     flex-direction: column;
     color: #ffffff;
 }
 
 .column p{
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+
+.temp{
+    display: flex;
+    margin-right: 1rem;
 }
 
 .feels{
     border-right: 1px double white;
+    display: flex;
 }
 
 .humidity{
     border-right:1px solid white ;
+    display: flex;
+    padding: 0rem 1rem;
 }
 
 .wind{
-    border-right:1px solid white ;
+    display: flex;
 }
 
 box-icon{

@@ -3,8 +3,9 @@ let colors = document.querySelectorAll(".color");
 let body = document.querySelector("body");
 let search = document.querySelector(".search");
 let locationBtn = document.querySelector("#currentLocation");
+let weatherIcon = document.querySelector(".weatherIcon");
 
-const apiKey = "13acafc387895c97f24733949f0fd616";
+const apiKey = "cf143052475e2f08ded73f2bca911704";
 
 let currentTheam;
 
@@ -22,19 +23,18 @@ for (color of colors) {
 let weatherReport = document.querySelector(".weatherReport");
 let backToSearchBtn = document.querySelector(".backArrow");
 
-locationBtn.addEventListener("click", function () {
-    search.style.visibility = "hidden";
-    weatherReport.style.visibility = "visible";
-});
 
 backToSearchBtn.addEventListener("click", function () {
     search.style.visibility = "visible";
     weatherReport.style.visibility = "hidden";
+    submit.value = "";
 })
 
-function requestApi(city) {
+let city;
+let da;
+async function requestApi(city) {
     api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    fetch(api)
+    const response = await fetch(api)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -42,13 +42,33 @@ function requestApi(city) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            da =data;
         })
         .catch(error => {
             console.log('Error:', error);
         });
+        console.log(da);
+        document.querySelector(".location").innerHTML = da.name;
+        document.querySelector(".weather").innerHTML = da.weather[0].main;
+        console.log(da.weather[0].main);
+        if (da.weather[0].main == "Clouds") {
+            weatherIcon.src = "images/cloud.svg";
+          } else if (da.weather[0].main == "Clear") {
+            weatherIcon.src = 'images/clear.png';
+          } else if (da.weather[0].main == "Rain") {
+            weatherIcon.src = "images/rain.png";
+          } else if (da.weather[0].main == "Drizzle") {
+            weatherIcon.src = "images/drizzle.png";
+          } else if (da.weather[0].main == "Mist") {
+            weatherIcon.src = 'images/mist.png';
+          }
+        document.querySelector(".num").innerHTML = da.main.temp;
+        document.querySelector(".feel").innerHTML = da.main.feels_like;
+        document.querySelector(".humid").innerHTML = da.main.humidity +"%";
+        document.querySelector(".windSpeed").innerHTML = da.wind.speed +"m/sec"; 
+
 }
-let city;
+
 let submit = document.querySelector("input");
 submit.addEventListener("keypress", function (event) {
     if (event.key === "Enter" && submit.value != "") {
@@ -56,9 +76,14 @@ submit.addEventListener("keypress", function (event) {
         weatherReport.style.visibility = "visible";
         city = submit.value;
         requestApi(city);
-        console.log(city);
-
     }
 });
 
-api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+locationBtn.addEventListener("click", function () {
+    search.style.visibility = "hidden";
+    weatherReport.style.visibility = "visible";
+});
+
+backArrow.addEventListener("click",function(){
+
+});
