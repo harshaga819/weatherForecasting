@@ -8,6 +8,25 @@ body{
     background-color: lightblue;
 }
 
+.alert{
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: .5rem;
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 1rem;
+    border: .05rem solid #ffffff;
+}
+@media (max-width: 686px){
+    .alert{
+        width: 80%;
+    }
+}
+
 .weatherReport{
     visibility: hidden;
     width: 100%;
